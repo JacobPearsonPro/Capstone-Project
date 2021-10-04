@@ -1,0 +1,27 @@
+html{
+    background-color: hsl(139, 89%, 15%);
+    font: 24px roboto bold
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 10px;
+
+}
+
+img {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+
+}
