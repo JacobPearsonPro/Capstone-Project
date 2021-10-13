@@ -1,6 +1,6 @@
 import html from "html-literal";
 
-export default () => html`
+export default st => html`
   <main id="About">
     <p>
       This project was if anything, inspired by my family's habit of dinner and
