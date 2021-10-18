@@ -5,8 +5,8 @@ html{
 
 nav{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-content: space-between;
     position: fixed;
     top: 0;
     width: 100%;
@@ -26,7 +26,7 @@ h1{
 
 }
 
-main {
+.one {
     background-color: hsl(139, 89%, 25%);
 
 }
