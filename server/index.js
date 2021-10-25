@@ -1,10 +1,20 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+
+dotenv.config();
+
 const app = express();
 
-const logging = (request, response, next) => {
-  console.log(`${request.method} ${request.url} ${Date.now()}`);
-  next();
-};
+mongoose.connect(process.env.MONGODB);
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "Connection error:"));
+db.once(
+  "open",
+  console.log.bind(console, "Successfully opened connection to Mongo!")
+);
+
 app.use(express.json());
 app.use(logging);
 
