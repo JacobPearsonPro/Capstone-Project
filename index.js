@@ -31,7 +31,7 @@ function newDeck(st) {
       console.log("it worked: newDeck");
       axios
         .get(
-          `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+          `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
         `
         )
         .then(response => {
@@ -52,7 +52,7 @@ function newDeck(st) {
 //       console.log("it worked: drawTwo");
 //       axios
 //         .get(
-//           `http://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=2`
+//           `https://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=2`
 //         )
 //         .then(response => {
 //           console.log(response.data.cards);
@@ -72,7 +72,7 @@ function draw(st) {
       console.log("it worked: draw");
       axios
         .get(
-          `http://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=1`
+          `https://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=1`
         )
         .then(response => {
           console.log(response.data.cards);
@@ -103,7 +103,7 @@ function shuffle(st) {
       event.preventDefault();
       axios
         .get(
-          `http://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/shuffle/
+          `https://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/shuffle/
           `
         )
         .then(response => console.log(response));
@@ -139,7 +139,7 @@ router.hooks({
     if (page === "Game") {
       axios
         .get(
-          `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+          `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
         `
         )
         .then(response => {
