@@ -1,0 +1,53 @@
+// const { Router } = require("express");
+// const router = Router();
+
+// let deckId = [];
+
+// function newDeck() {
+//   router.get(
+//     `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`,
+//     (request, response) => {
+//       deckId = response.body.deck_id;
+//       response.body.findById(request.params.id, (error, data) => {
+//         if (error) return response.sendStatus(500).json(error);
+//         return response.json(data);
+//       });
+//     }
+//   );
+// }
+
+// function draw1(st) {
+//   router.get(
+//     `http://deckofcardsapi.com/api/deck/${st.Game.Deck.deck_id}/draw/?count=1`,
+//     (request, response) => {
+//       response.body.findById(request.params.id, (error, data) => {
+//         if (error) return response.sendStatus(500).json(error);
+//         return response.json(data);}
+//   );
+// }
+
+// function draw2() {
+//   router.get(
+//     `http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`,
+//     (request, response) => {}
+//   );
+// }
+
+// function discard() {
+//   router.get(
+//     `hthttp://deckofcardsapi.com/api/deck/${deckId}/pile/Discard/add/?cards=${hands}
+//     `,
+//     (request, response) => {}
+//   );
+// }
+
+// function shuffle() {
+//   router.get(
+//     `http://deckofcardsapi.com/api/deck/${deckId}/shuffle/`,
+//     (request, response) => {}
+//   );
+// }
+
+// newDeck();
+// draw1();
+// console.log(draw1);

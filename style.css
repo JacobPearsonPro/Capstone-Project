@@ -1,32 +1,54 @@
-html{
-    background-color: hsl(139, 89%, 15%);
-    font: 24px roboto bold
+html {
+  background-color: hsl(139, 66%, 15%);
+  font-family: "Roboto", sans-serif;
 }
 
-nav{
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 10px 10px;
-
+div {
+  background-color: hsl(139, 89%, 25%);
+  padding: 1%;
+  font-size: large;
+}
+nav {
+  display: flex;
+  flex-direction: row;
 }
 
 img {
-    width: 50%;
-    margin: auto;
-    display: block;
+  width: 15%;
+  margin: 5%;
+  display: flexbox;
+  flex-direction: row;
 }
 
-h1{
-    display: flex;
-    justify-content: center;
-
+h1 {
+  display: flex;
+  justify-content: center;
 }
 
-.one {
-    background-color: hsl(139, 89%, 25%);
+main {
+  width: 90%;
+  height: 90%;
+}
 
+.buttonHolder {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-evenly;
+  padding: 10px 10px;
+}
+.button {
+  display: flex;
+  font-size: smaller;
+  color: white;
+  cursor: pointer;
+  background-color: hsl(139, 66%, 15%);
+  align-content: center;
+  justify-content: center;
+  border-radius: 10%;
+  padding: 0.5%;
+  margin: 10%;
+}
+.cards {
+  height: 300px;
 }
