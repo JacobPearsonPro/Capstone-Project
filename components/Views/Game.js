@@ -1,9 +1,9 @@
 import html from "html-literal";
 export default st => html`
   <main id="Game">
-    <h1>Instructions are at the bottom of the page</h1>
+    <h2>Instructions are at the bottom of the page</h2>
     <div class="cards" id="aiCards"></div>
-    <div class="textHolder" id="textHolder"></div>
+    <h1 class="textHolder" id="textHolder"></h1>
     <div class="cards" id="playerCards"></div>
 
     <div class="buttonHolder">

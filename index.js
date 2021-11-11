@@ -23,9 +23,8 @@ function render(st) {
   shuffle(st);
   computerStartingHand(st);
   startingHand(st);
+  computerDraws(st);
 }
-
-let st = state;
 
 function newDeck(st) {
   //If the page is Game, then make the button ID'd as newDeck into a button that does a thing when clicked. Console.log to show that it worked.
@@ -41,9 +40,10 @@ function newDeck(st) {
       .then(response => {
         state.Game.deck = {};
         state.Game.deck.deck_id = response.data.deck_id;
-        state.Game.deck.handValue = 0;
-        state.Game.deck.computerHandValue = 0;
         console.log(state.Game.deck.deck_id);
+        state.Game.deck.computerHandValue = 0;
+        state.Game.deck.handValue = 0;
+
         //Async Await functions don't like the combination of Ifs, EventListener, Axios, and Render I think
 
         //If this is true, which it won't be until the above has triggered, thus it'll wait, do things to the returned info from the above Axios API call, like using its response for targeting data for the next one.
@@ -119,54 +119,66 @@ function computerStartingHand(st) {
             state.Game.deck.computerCardValue0 +
             state.Game.deck.computerCardValue1;
           console.log(state.Game.deck.computerHandValue);
-
-          // while (
-
-          //We're staying, so its time to check our values to figure out how that round ended.
-          //   st.page === "Game" &&
-          //   16 > state.Game.deck.computerHandValue > 0
-          // ) {
-          //   axios
-          //     .get(
-          //       `https://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=2`
-          //     )
-          //     //Then save their images to state/store so I can use it later.
-          //     .then(response => {
-          //       console.log(response.data.cards);
-          //       state.Game.deck.computerCardImage0 =
-          //         response.data.cards[0].image;
-          //       console.log(state.Game.deck.computerCardImage0);
-
-          //       let computerCardCreation0 = document.createElement("img");
-          //       computerCardCreation0.className = "card";
-          //       computerCardCreation0.src = state.Game.deck.computerCardImage0;
-          //       document
-          //         .getElementById("aiCards")
-          //         .appendChild(computerCardCreation0);
-
-          //       if (response.data.cards[0].value == "ACE") {
-          //         state.Game.deck.computerCardValue0 = 10;
-          //       } else if (response.data.cards[0].value == "JACK") {
-          //         state.Game.deck.computerCardValue0 = 10;
-          //       } else if (response.data.cards[0].value == "QUEEN") {
-          //         state.Game.deck.computerCardValue0 = 10;
-          //       } else if (response.data.cards[0].value == "KING") {
-          //         state.Game.deck.computerCardValue0 = 10;
-          //       } else
-          //         state.Game.deck.computerCardValue0 = parseInt(
-          //           response.data.cards[0].value,
-          //           10
-          //         );
-
-          //       console.log(response.data.cards[0].value);
-
-          //       console.log(state.Game.deck.computerHandValue);
-          //       state.Game.deck.computerHandValue +=
-          //         state.Game.deck.computerCardValue0;
-          //       console.log(state.Game.deck.computerHandValue);
-          //     });
-          // }
         });
+    });
+  }
+}
+
+function computerDraws(st) {
+  //If the page is Game, then make the button ID'd as draw into a button that does a thing when clicked. Console.log to show that it worked.
+  if (st.page === "Game") {
+    document.querySelector("#root").addEventListener("click", event => {
+      event.preventDefault();
+      console.log("it worked: computerDraw");
+      //Hey axios, get me a single card from the API please.
+      if (
+        state.Game.deck.computerHandValue <= 16 &&
+        state.Game.deck.computerHandValue > 0
+      )
+        axios
+          .get(
+            `https://deckofcardsapi.com/api/deck/${state.Game.deck.deck_id}/draw/?count=2`
+          )
+          //Then save their images to state/store so I can use it later.
+          .then(response => {
+            console.log(
+              "log the response from the above axios call",
+              response.data.cards
+            );
+            state.Game.deck.computerCardImage0 = response.data.cards[0].image;
+            console.log(
+              "log that it successfully saved the image to state",
+              state.Game.deck.computerCardImage0
+            );
+
+            let computerCardCreation0 = document.createElement("img");
+            computerCardCreation0.className = "card";
+            computerCardCreation0.src = state.Game.deck.computerCardImage0;
+            document
+              .getElementById("aiCards")
+              .appendChild(computerCardCreation0);
+
+            if (response.data.cards[0].value == "ACE") {
+              state.Game.deck.computerCardValue0 = 10;
+            } else if (response.data.cards[0].value == "JACK") {
+              state.Game.deck.computerCardValue0 = 10;
+            } else if (response.data.cards[0].value == "QUEEN") {
+              state.Game.deck.computerCardValue0 = 10;
+            } else if (response.data.cards[0].value == "KING") {
+              state.Game.deck.computerCardValue0 = 10;
+            } else {
+              state.Game.deck.computerCardValue0 = parseInt(
+                response.data.cards[0].value,
+                10
+              );
+            }
+            console.log(response.data.cards[0].value);
+
+            console.log(state.Game.deck.computerHandValue);
+            state.Game.deck.computerHandValue +=
+              state.Game.deck.computerCardValue0;
+            console.log(state.Game.deck.computerHandValue);
+          });
     });
   }
 }
@@ -297,19 +309,22 @@ function stay(st) {
       event.preventDefault();
       if (state.Game.deck.handValue === 21) {
         document.getElementById("textHolder").innerHTML = "Blackjack";
-      }
-      if (
-        state.Game.deck.handValue === state.Game.deck.computerHandValue &&
-        state.Game.deck.handValue < 21
+      } else if (
+        state.Game.deck.handValue == state.Game.deck.computerHandValue
       ) {
         document.getElementById("textHolder").innerHTML = "Tie";
-      }
-      if (
+      } else if (
         state.Game.deck.handValue > state.Game.deck.computerHandValue &&
         state.Game.deck.handValue <= 21
       ) {
         document.getElementById("textHolder").innerHTML = "You Win";
-      } else document.getElementById("textHolder").innerHTML = "You Lose";
+      } else if (state.Game.deck.handValue > 21) {
+        document.getElementById("textHolder").innerHTML = "You Busted";
+      } else if (
+        state.Game.deck.handValue < state.Game.deck.computerHandValue &&
+        state.Game.deck.computerHandValue <= 21
+      )
+        document.getElementById("textHolder").innerHTML = "You Lose";
 
       //Then remove cards from the page and reset hand values so we can play a new round.
       document.getElementById("playerCards").innerHTML = "";

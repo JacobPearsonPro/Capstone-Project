@@ -1,18 +1,18 @@
 html {
-  background-color: hsl(139, 66%, 15%);
+  background-color: hsl(140, 100%, 10%);
   font-family: "Roboto", sans-serif;
 }
 
 div {
-  background-color: hsl(139, 89%, 25%);
+  background-color: hsl(140, 100%, 25%);
   padding: 1%;
   /* animation: 1s infinite; */
   font-size: large;
 }
 nav {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 15px;
   flex-direction: row;
 }
 
@@ -38,17 +38,25 @@ main {
   flex-direction: row;
   align-content: space-between;
   justify-content: space-evenly;
-  padding: 10px 10px;
+  padding: 5px 5px;
 }
 .button {
   display: flex;
   font-size: smaller;
   color: white;
   cursor: pointer;
-  background-color: hsl(139, 66%, 15%);
+  background-color: hsl(140, 100%, 10%);
   align-content: center;
   justify-content: center;
   border-radius: 10%;
   padding: 0.5%;
   margin: 1%;
+}
+
+.textHolder {
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: hsl(140, 100%, 40%);
 }
