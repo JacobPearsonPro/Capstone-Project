@@ -6,16 +6,19 @@ html {
 div {
   background-color: hsl(139, 89%, 25%);
   padding: 1%;
+  /* animation: 1s infinite; */
   font-size: large;
 }
 nav {
-  display: flex;
+  position: fixed;
+  top: 10px;
+  right: 10px;
   flex-direction: row;
 }
 
 img {
-  width: 15%;
-  margin: 5%;
+  height: 150px;
+  margin: 1%;
   display: flexbox;
   flex-direction: row;
 }
@@ -47,8 +50,5 @@ main {
   justify-content: center;
   border-radius: 10%;
   padding: 0.5%;
-  margin: 10%;
-}
-.cards {
-  height: 300px;
+  margin: 1%;
 }

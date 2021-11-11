@@ -12,7 +12,7 @@ export default st => html`
         >
       </li>
       <li>
-        <a href="https://JacobPearsonPro@gmail.com">Gmail</a>
+        <a>https://JacobPearsonPro@gmail.com</a>
       </li>
     </ul>
   </main>

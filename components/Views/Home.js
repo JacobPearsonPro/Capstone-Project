@@ -1,10 +1,6 @@
 import html from "html-literal";
-const kelvinToFahrenheit = kelvinTemp =>
-  Math.round((kelvinTemp - 273.15) * (9 / 5) + 32);
 
 export default st => html`
-  <h3>text</h3>
-
   <main id="Home">
     <h1>Welcome to my Capstone Project.</h1>
     <p>
