@@ -2,9 +2,16 @@ import html from "html-literal";
 export default st => html`
   <main id="Game">
     <h2>Instructions are at the bottom of the page</h2>
-    <div class="cards" id="aiCards"></div>
+    <div class="cardArea">
+      <div class="blackjackCardText" id="aiText"></div>
+      <div class="cards" id="aiCards"></div>
+    </div>
     <h1 class="textHolder" id="textHolder"></h1>
-    <div class="cards" id="playerCards"></div>
+
+    <div class="cardArea">
+      <div class="blackjackCardText" id="playerText"></div>
+      <div class="cards" id="playerCards"></div>
+    </div>
 
     <div class="buttonHolder">
       <div class="button" id="startingHand">
@@ -25,7 +32,9 @@ export default st => html`
       Instructions: Click the Starting Hand button to draw your initial hand.
       Click the Hit button to draw another card, or click the Stay button when
       you're okay with the cards in your hand. Click the Shuffle button to
-      shuffle all drawn cards back into the deck for a new game.
+      shuffle all drawn cards back into the deck for a new game. Clicking
+      anywhere after the initial hands are drawn to have the computer check its
+      hand, and then draw if needed.
     </h3>
     <h4>
       Your goal is to get the value of your hand as close to 21 as you can, but

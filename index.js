@@ -202,6 +202,9 @@ function startingHand(st) {
           state.Game.deck.cardImage1 = response.data.cards[1].image;
           console.log(state.Game.deck.cardImage1);
 
+          document.getElementById("aiText").innerHTML = "Computer's Hand";
+          document.getElementById("playerText").innerHTML = "Your Hand";
+
           let cardCreation0 = document.createElement("img");
           cardCreation0.className = "card";
           cardCreation0.src = state.Game.deck.cardImage0;
@@ -323,12 +326,16 @@ function stay(st) {
       } else if (
         state.Game.deck.handValue < state.Game.deck.computerHandValue &&
         state.Game.deck.computerHandValue <= 21
-      )
+      ) {
         document.getElementById("textHolder").innerHTML = "You Lose";
+      }
 
       //Then remove cards from the page and reset hand values so we can play a new round.
       document.getElementById("playerCards").innerHTML = "";
       document.getElementById("aiCards").innerHTML = "";
+      document.getElementById("aiText").innerHTML = "";
+      document.getElementById("playerText").innerHTML = "";
+
       state.Game.deck.handValue = 0;
       state.Game.deck.computerHandValue = 0;
     });

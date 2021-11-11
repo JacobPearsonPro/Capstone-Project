@@ -5,10 +5,11 @@ html {
 
 div {
   background-color: hsl(140, 100%, 25%);
-  padding: 1%;
+  padding: 0.5%;
   /* animation: 1s infinite; */
   font-size: large;
 }
+
 nav {
   position: fixed;
   top: 5px;
@@ -18,16 +19,23 @@ nav {
 
 img {
   height: 150px;
-  margin: 1%;
-  display: flexbox;
+  padding: 0.5%;
+  display: flex;
   flex-direction: row;
+  align-content: space-between;
+  justify-content: space-evenly;
 }
 
 h1 {
   display: flex;
   justify-content: center;
 }
-
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
 main {
   width: 90%;
   height: 90%;
@@ -50,7 +58,6 @@ main {
   justify-content: center;
   border-radius: 10%;
   padding: 0.5%;
-  margin: 1%;
 }
 
 .textHolder {

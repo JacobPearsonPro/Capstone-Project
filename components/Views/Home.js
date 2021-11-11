@@ -12,5 +12,14 @@ export default st => html`
     <ul>
       <li>Blackjack</li>
     </ul>
+
+    <h2>Future Improvements</h2>
+    <ul>
+      <li>Make the above Blackjack entry into a link.</li>
+      <li>Find a good picture to place in the dark green below this.</li>
+      <li>Decorative borders.</li>
+      <li>Make the Win/Lose and such pop ups animated.</li>
+      <li>Start making the next game.</li>
+    </ul>
   </main>
 `;
